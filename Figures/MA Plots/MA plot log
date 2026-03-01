@@ -1,1 +1,22 @@
+#############################################################
+MA Plot for Mature vs Early Biofilm
+The MA plots show a strong and widespread transcriptional shift between the two stages. In both the unshrunk and shrunk versions, a large number of genes deviate substantially from the horizontal baseline, indicating extensive differential expression. 
+Genes with higher mean normalized counts show more stable fold‑change estimates, while genes with low counts display greater variability in the unshrunk plot.
+Applying shrinkage reduces the extreme log fold‑change values for low‑abundance genes, pulling them toward zero and producing a more conservative and biologically interpretable distribution.
+The clear vertical spread of points in both plots reflects the extensive transcriptional reprogramming that occurs as the biofilm transitions from early to mature stages, consistent with the PCA and heatmap results.
+Biologically, this pattern reflects the major shift from a fermentative, growth‑oriented early biofilm state to the fully developed respiratory and stress‑adapted phenotype of the mature velum, where genes supporting oxidative metabolism, adhesion, and long‑term survival become strongly upregulated while glycolytic and nutrient‑responsive pathways are repressed.
 
+##################################################################
+MA Plot for Thin vs Early Biofilm
+MA plots show the expected moderate but clear transcriptional shift that marks the transition from early biofilm formation toward the more stress‑responsive thin biofilm state. 
+The unshrunk plot displays a wide vertical spread of log fold‑changes, especially among low‑count genes, reflecting higher variance and more extreme fold‑change estimates.
+After shrinkage, these extreme values are pulled toward zero, producing a more stable and interpretable distribution while preserving the overall differential expression pattern. A substantial number of genes still deviate from the baseline in the shrunk plot, indicating that meaningful transcriptional changes occur even at this intermediate stage.
+Biologically, the plot can be interpreted as the thin biofilm cells downregulating glycolytic and growth‑associated genes characteristic of early biofilm while showing partial induction of oxidative‑stress, mitochondrial, and transporter pathways. 
+This reflects the yeast’s early adaptation to increasing oxidative pressure and nutrient limitation at the wine surface, marking the onset of the metabolic and stress‑response reprogramming that becomes fully established in the mature biofilm.
+
+#####################################################################
+MA Plot for Thin vs Mature Biofilm
+The MA plot comparing thin and mature biofilm stages shows a clear and extensive transcriptional shift as the biofilm completes its transition into the fully developed velum state. 
+Shrinkage stabilizes extreme fold‑change estimates, but the overall pattern remains: many genes deviate strongly from the baseline, reflecting widespread upregulation of oxidative metabolism, mitochondrial activity, sulfur assimilation, protein‑quality‑control pathways, and FLO11‑associated adhesion in mature biofilm. 
+In contrast, thin biofilm retains higher expression of several glycolytic, transporter, and growth‑associated genes, consistent with its intermediate physiological state.
+Therefore capturing the final step of the developmental progression: thin biofilm as a transitional state, and mature biofilm as a fully reprogrammed, stress‑adapted, respiratory state.
