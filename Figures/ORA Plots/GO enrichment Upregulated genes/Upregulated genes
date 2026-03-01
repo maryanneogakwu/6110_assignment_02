@@ -1,3 +1,24 @@
 GO Enrichment ORA for Upregulated genes across biofilm stages
 ########################################################################
 GO Mature vs Early upregulated genes
+These results show  a tightly connected set of processes centered on mitochondrial function, respiration, and protein quality control, capturing the core shift that defines mature biofilm physiology. 
+Many of the most enriched categories involve mitochondrion organization, mitochondrial translation, respiratory chain complex assembly, and aerobic respiration, reflecting a strong activation of oxidative metabolism as cells transition away from the fermentative, growth‑oriented early stage. 
+Additional terms related to protein folding, proteasomal protein catabolism, and modification‑dependent degradation highlight increased investment in maintaining proteome integrity under the stressful conditions. 
+The repeated appearance of mitochondrial membrane and inner‑membrane organization terms reinforces the idea that mature biofilm cells undergo substantial remodeling of their respiratory machinery. 
+Together, these results show that mature biofilm formation is driven by a coordinated upregulation of energy production, mitochondrial biogenesis, and protein‑quality‑control pathways that support long‑term survival and adhesion at the air–liquid interface.
+
+#############################################################################
+GO Thin vs Early upregulated genes
+This plot forms a cohesive picture of a biofilm transitioning from an early, highly fermentative state into a more metabolically active and structurally developing thin stage. 
+Many of the strongest enrichments involve cytoplasmic translation, ribosome biogenesis, ribosome assembly, and rRNA maturation, indicating that thin biofilm cells substantially increase their protein‑synthesis capacity. 
+This is paired with the upregulation of mitochondrion organization, cellular respiration, and aerobic respiration, showing that cells begin activating oxidative pathways that are largely absent in early biofilm. 
+Additional enrichment of amino‑acid biosynthetic processes and organic‑acid biosynthesis reflects increased production of metabolic building blocks needed to support expanded translation and metabolic restructuring.
+Altogether, these processes show that thin biofilm stage represents a dynamic intermediate stage characterized by elevated biosynthesis, increased mitochondrial function, and the early establishment of respiratory capacity, setting the stage for the fully oxidative, stress‑adapted physiology of mature biofilm.
+
+###############################################################################
+GO Thin vs Mature upregulated genes
+This plot shows a broad activation of metabolic and transport processes that become more prominent as the biofilm reaches full maturity.
+Many of the enriched categories involve transmembrane transport, including amino‑acid, organic‑anion, and small‑molecule transport, indicating that mature biofilm cells increase their capacity to move nutrients, metabolites, and signaling molecules across the membrane. 
+This is paired with strong enrichment for lipid metabolic and biosynthetic processes, suggesting enhanced membrane remodeling and lipid‑driven structural maintenance in the mature state. 
+Additional terms related to organophosphate and phosphorus metabolism, carbohydrate‑derivative biosynthesis, and nucleobase‑containing small‑molecule metabolism reflect increased investment in producing and processing key metabolic intermediates. 
+Together, these results show that mature biofilm cells upregulate a suite of biosynthetic, metabolic, and transport pathways that support the fully developed, long‑term survival phenotype characteristic of the velum stage.
