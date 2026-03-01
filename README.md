@@ -13,6 +13,19 @@ The study was applied to an RNAseq analysis for transcriptome analysis of the st
 This bulk RNAseq analysis will involve the transcript quantification, Differential Expression analysi, Functional Annotation and ORA/GSEA to detremine the changes in gene expression from Early to Mature stages of flor formation.
 
 ----
+## Expected Results
+Based on the results of the paper, Flor yeast is expected to undergo major metabolic reprogramming as it transitions from early biofilm to mature velum, shifting from sugar‑based glycolysis to ethanol and glycerol oxidation alongside increased mitochondrial activity and oxidative metabolism. This transition reflects adaptation to the nutrient‑poor, ethanol‑rich, oxygen‑limited environment at the wine surface, driving extensive rewiring of metabolism, stress‑response systems, and cell‑wall architecture in response to accumulating metabolic by‑products and oxidative stress.
+
+The authors identified 1,490 differentially expressed genes, indicating a coordinated shift from a fermentative lifestyle to a respiratory, stress‑resistant, biofilm‑forming state. Key patterns included upregulation of oxidative metabolism, mitochondrial function, sulfur assimilation, protein quality control, and stress‑response pathways, along with downregulation of glycolysis, nutrient transporters, and growth‑associated functions. A striking feature was the strong induction of FLO11, the primary flocculin required for velum formation.
+
+In line with the paper’s differential expression framework, the expected DEG patterns fall into four categories. Up2 genes should show moderate induction during the transition from early to thin biofilm, including oxidative‑stress responders and some amino‑acid transporters. Up4 genes are expected to be strongly induced in the mature biofilm, such as FLO11, mitochondrial and respiratory genes, sulfur‑assimilation genes, and protein‑quality‑control pathways. Dn2 genes should show moderate repression as nutrients decline, while Dn4 genes are expected to be strongly downregulated in the mature biofilm, particularly glycolytic enzymes, sugar transporters, and other fermentative‑metabolism pathways. These categories collectively reflect the yeast’s progression toward a respiratory, stress‑tolerant, biofilm‑forming phenotype.
+
+Based on the paper, this bulk RNAseq differential expression analysis should reveal distinct signatures for each stage. Early biofilm is expected to show residual glycolysis, limited mitochondrial activity, and moderate stress responses. Thin biofilm should display increased expression of amino‑acid transporters and oxidative‑stress genes. Mature biofilm should show the strongest induction of FLO11, sulfur metabolism, mitochondrial genes, protein quality control, and DNA repair pathways, consistent with heightened oxidative and aldehyde stress. This stage is also expected to show increased heat‑shock proteins, chaperones, proteasome activity, and unfolded‑protein‑response genes, reflecting long term stress adaptation.
+ 
+
+It is expected that the GO  enrichment will highlight oxidative phosphorylation, mitochondrial biogenesis, sulfur metabolism, protein folding, and stress‑response pathways among upregulated genes, and glycolysis, sugar transport, and amino‑acid transport among downregulated genes.
+
+----
 
 ## Methods
 
