@@ -1,1 +1,22 @@
+##############################################################
+Volcano plot Mature vs Early Biofilm
+This plot shows a strong and well‑defined differential expression signature, with a large number of genes exhibiting both high statistical significance and substantial fold‑change differences. 
+Upregulated and downregulated genes form clear clusters on opposite sides of the plot, reflecting broad transcriptional shifts between the two stages. 
+The wide horizontal spread indicates large magnitude changes in expression, while the tall vertical distribution demonstrates strong statistical support for these differences. This pattern highlights the transcriptional changes distinguishing mature from early biofilm samples.
+These results help support findings in the paper.
+Early biofilm cells rely on glycolysis and growth‑associated pathways, while mature biofilm cells adopt a respiratory, stress‑adapted, adhesion‑focused phenotype optimized for survival at the wine surface. 
+The strong enrichment of upregulated stress‑response, mitochondrial, and sulfur‑metabolism genes in mature biofilm, paired with the repression of fermentative and nutrient‑responsive genes, visually confirms this metabolic and physiological transition.
 
+################################################################
+Volcano plot Thin vs Early Biofilm
+This plot shows a moderate but well‑defined differential expression pattern, with distinct clusters of significantly upregulated and downregulated genes separating cleanly along the fold‑change axis. 
+The horizontal spread indicates measurable shifts in expression magnitude between the two stages, while the vertical distribution reflects strong statistical support for many of these changes.
+Although the overall signal is less extensive than in the Mature vs Early contrast, the plot still highlights a substantial set of genes whose expression differs significantly as cells transition from early biofilm formation into the thin biofilm state. This distribution underscores the presence of coordinated transcriptional adjustments during this intermediate stage.
+Biologically, this pattern reflects the early stages of the metabolic and stress‑response shift, where thin biofilm cells begin reducing glycolytic and growth‑associated activity while initiating partial activation of oxidative‑stress and mitochondrial pathways as they adapt to the wine‑surface environment.
+
+###################################################################
+Volcano Plot Thin vs Mature Biofilm
+This plot  shows a strong and well‑defined differential expression pattern, with clear clusters of significantly upregulated and downregulated genes separating along the fold‑change axis. 
+The broad horizontal spread reflects substantial changes in expression magnitude between the two stages, while the tall vertical distribution indicates high statistical confidence for many of these differences. 
+Compared with the Thin vs Early contrast, the signal here is more extensive, highlighting the large transcriptional shift that occurs as the biofilm completes its transition into the mature state. 
+Biologically, this distribution reflects the full activation of late‑stage metabolic and stress‑response programs in mature biofilm, alongside the decline of intermediate‑stage signatures that remain more prominent in thin biofilm.
