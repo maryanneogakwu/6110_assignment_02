@@ -1,0 +1,39 @@
+# -----------------------  MA Plots ----------------------
+
+#Plotting Thin vs Early stages shrunk and unshrunk side by side to view changes shrinking makes.
+par(mfrow=c(1,2))   # 1 row, 2 columns
+
+plotMA(res_thin,
+       ylim=c(-2,2),
+       main="Thin vs Early Unshrunk")
+
+plotMA(resLFC_thin,
+       ylim=c(-2,2),
+       main="Thin vs Early Shrunk")
+# reset layout
+par(mfrow=c(1,1))
+#Plotting Mature vs Early  stages shrunk and unshrunk side by side to view changes shrinking makes.
+par(mfrow=c(1,2))   # 1 row, 2 columns
+
+plotMA(res_mature,
+       ylim=c(-2,2),
+       main="Mature vs Early Unshrunk")
+
+plotMA(resLFC_mature,
+       ylim=c(-2,2),
+       main="Mature vs Early Shrunk")
+# reset layout
+par(mfrow=c(1,1))
+
+#Plotting Thin vs Mature stages shrunk and unshrunk side by side to view changes shrinking makes.
+par(mfrow=c(1,2))   # 1 row, 2 columns
+
+plotMA(res_inter,
+       ylim=c(-2,2),
+       main="Thin vs Mature Unshrunk")
+
+plotMA(resLFC_inter,
+       ylim=c(-2,2),
+       main="Thin vs Mature Shrunk")
+# reset layout
+par(mfrow=c(1,1))
