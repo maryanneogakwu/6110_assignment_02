@@ -1,0 +1,154 @@
+# --------------- Global Biofilm Progression Heatmap -----------------
+# Remove NA values
+resLFC_thin <- na.omit(resLFC_thin)
+resLFC_mature <- na.omit(resLFC_mature)
+resLFC_inter <- na.omit(resLFC_inter)
+
+#This is to represent the changes in gene expression across all stages of the biofilm growth. I'll be zooming in to get a better idea for each stage.
+sig1 <- rownames(resLFC_thin[resLFC_thin$padj < 0.05, ])
+sig2 <- rownames(resLFC_mature[resLFC_mature$padj < 0.05, ])
+sig3 <- rownames(resLFC_inter[resLFC_inter$padj < 0.05, ])
+#Because the purpose of that heatmap is to capture all biologically responsive genes, show global clustering and avoid artificially shrinking the gene set. So adding a log2FC cutoff would remove moderate but real stage-transition genes and distort the progression pattern.
+#For a global progression heatmap, some moderate shifts are biologically meaningful
+
+gene_names <- unique(c(sig1, sig2, sig3))
+
+#Variance stabilizing transformation
+vsd <- vst(dds, blind = FALSE)
+
+#Extract expression matrix for significant genes
+mat <- assay(vsd)[gene_names, ]
+
+# Remove genes with zero variance
+mat <- mat[apply(mat, 1, var) != 0, ]
+
+#Create annotation dataframe
+annotation_df <- data.frame(Stage = sampleTable$Stage)
+rownames(annotation_df) <- sampleTable$Sample
+annotation_df$Stage <- as.factor(annotation_df$Stage)
+
+#Check alignment
+all(rownames(annotation_df) == colnames(mat))
+
+#Generate a Global biofilm preogression heatmap
+pheatmap(mat,
+         scale = "row",
+         cluster_rows = TRUE,
+         cluster_cols = TRUE,
+         annotation_col = annotation_df,
+         show_rownames = FALSE,
+         show_colnames = FALSE,
+         fontsize = 8)
+
+# -------------- Biofilm Heatmap for different stages --------
+#Thin vs Early
+sig_thin <- rownames(resLFC_thin[
+  resLFC_thin$padj < 0.05 &
+    abs(resLFC_thin$log2FoldChange) > 1,
+])
+#Variance Sabilising Transformation
+vsd <- vst(dds, blind = FALSE)
+
+#Extracting Expression Matrix
+mat_thin <- assay(vsd)[sig_thin, ]
+
+#Top 30 genes
+top_genes_thin <- head(order(resLFC_thin$padj), 20)
+gene_names_thin <- rownames(resLFC_thin)[top_genes_thin]
+
+mat_thin <- assay(vsd)[gene_names_thin, ]
+
+#Remove zero variance genes 
+mat_thin <- mat_thin[apply(mat_thin, 1, var) != 0, ]
+
+#I'll use the same Stage Annotation Labels I created earlier for the global heatmap
+#Checking row names
+all(rownames(annotation_df) == colnames(mat_thin))
+
+#***************************************************************
+#Heatmap for Thin vs Early
+pheatmap(mat_thin,
+         scale = "row",
+         cluster_rows = TRUE,
+         cluster_cols = TRUE,
+         annotation_col = annotation_df,
+         show_rownames = TRUE,      # ← labeled genes
+         show_colnames = FALSE,
+         fontsize_row = 8,
+         fontsize = 10,
+         main = "Differentially Expressed Genes: Thin vs Early")
+
+#***************************************************************
+#Mature vs Early
+sig_mature <- rownames(resLFC_mature[
+  resLFC_mature$padj < 0.05 &
+    abs(resLFC_mature$log2FoldChange) > 1,
+])
+#Variance Sabilising Transformation
+vsd <- vst(dds, blind = FALSE)
+
+#Extracting Expression Matrix
+mat_mature <- assay(vsd)[sig_mature, ]
+
+#Top 30 genes
+top_genes_mature <- head(order(resLFC_mature$padj), 20)
+gene_names_mature <- rownames(resLFC_mature)[top_genes_mature]
+
+mat_mature <- assay(vsd)[gene_names_mature, ]
+
+#Remove zero variance genes 
+mat_mature <- mat_mature[apply(mat_mature, 1, var) != 0, ]
+
+#I'll use the same Stage Annotation Labels I created earlier for the global heatmap
+#Checking row names
+all(rownames(annotation_df) == colnames(mat_mature))
+
+#Heatmap for Mature vs Early
+pheatmap(mat_mature,
+         scale = "row",
+         cluster_rows = TRUE,
+         cluster_cols = TRUE,
+         annotation_col = annotation_df,
+         show_rownames = TRUE,      
+         show_colnames = FALSE,
+         fontsize_row = 8,
+         fontsize = 10,
+         main = "Differentially Expressed Genes: Mature vs Early")
+
+
+#*****************************************************
+#Thin vs Mature
+sig_inter <- rownames(resLFC_inter[
+  resLFC_inter$padj < 0.05 &
+    abs(resLFC_inter$log2FoldChange) > 1,
+])
+#Variance Sabilising Transformation
+vsd <- vst(dds, blind = FALSE)
+
+#Extracting Expression Matrix
+mat_inter <- assay(vsd)[sig_inter, ]
+
+#Top 30 genes
+top_genes_inter <- head(order(resLFC_inter$padj), 20)
+gene_names_inter <- rownames(resLFC_inter)[top_genes_inter]
+
+mat_inter <- assay(vsd)[gene_names_inter, ]
+
+#Remove zero variance genes 
+mat_inter <- mat_inter[apply(mat_thin, 1, var) != 0, ]
+
+#I'll use the same Stage Annotation Labels I created earlier for the global heatmap
+#Checking row names
+all(rownames(annotation_df) == colnames(mat_inter))
+
+#Heatmap for Thin vs Early
+pheatmap(mat_inter,
+         scale = "row",
+         cluster_rows = TRUE,
+         cluster_cols = TRUE,
+         annotation_col = annotation_df,
+         show_rownames = TRUE,     
+         show_colnames = FALSE,
+         fontsize_row = 8,
+         fontsize = 10,
+         main = "Differentially Expressed Genes: Thin vs Mature")
