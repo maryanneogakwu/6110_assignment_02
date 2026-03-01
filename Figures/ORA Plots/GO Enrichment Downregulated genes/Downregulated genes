@@ -1,1 +1,22 @@
+GO enrichment ORA for Downrgulated genes
+#################################################
+GO Mature vs Early downregulated genes
+form a coherent picture of what the cell is turning off as it transitions from an early, growth‑oriented state to the fully developed mature velum. The enriched categories cluster around lipid metabolism, phosphorus and organophosphate metabolism, nucleotide turnover, transmembrane transport, and carbon‑processing pathways such as monocarboxylic acid and alcohol metabolism. 
+Together, these results indicate a broad suppression of biosynthetic activity, nutrient uptake, and energy‑intensive metabolic processes.
+Early biofilm cells rely heavily on these pathways to support growth, membrane remodeling, and active resource acquisition, but mature biofilm cells downregulate them as they shift toward a slower‑growing, stress‑adapted, respiratory lifestyle. This coordinated decline in metabolic and transport functions aligns with the global transcriptomic reprogramming.
 
+###########################################################
+GO Thin vs Early downregulated genes
+This plot points to a coordinated reduction in core metabolic and energy‑producing pathways as cells move from the early biofilm stage into the thin biofilm state. 
+Many of the enriched categories fall under carbohydrate metabolism, glycolysis, monocarboxylic acid metabolism, and alcohol and nucleotide catabolic processes, indicating that thin biofilm cells suppress the high‑flux carbon and nucleotide turnover that characterizes early growth. 
+Several terms related to nicotinamide and pyridine nucleotide metabolism also appear, reflecting reduced activity in redox‑linked pathways that support rapid energy generation. 
+The repeated enrichment of organophosphate and nucleoside diphosphate catabolic processes reinforces this pattern, showing a broad downshift in biosynthetic and catabolic functions tied to proliferation and metabolic flexibility. 
+Together, these results suggest that as the biofilm transitions from early to thin, cells begin to scale back growth‑associated metabolism and shift toward a more resource‑limited, stress‑aware physiological state.
+
+###############################################################
+GO Thin vs Mature downregulated genes
+This plot shows a coordinated suppression of pathways that are active in the thin biofilm stage but become less important once the biofilm reaches full maturity. 
+Many of the enriched categories relate to protein catabolism, including ubiquitin‑dependent and proteasome‑mediated degradation, indicating that thin biofilm cells rely more heavily on protein turnover and quality‑control mechanisms that are dialed back in the mature state. 
+Additional terms tied to carbohydrate metabolism, energy generation, and energy‑reserve pathways suggest that thin biofilm cells maintain higher metabolic flexibility and energy‑producing activity, which declines as the mature biofilm adopts a more stable, resource‑conserving physiology. 
+The presence of terms linked to morphogenesis and sporulation‑related processes further highlights that structural remodeling and developmental plasticity are reduced in the mature stage. 
+Together, these themes show that mature biofilm cells downregulate metabolic, proteolytic, and morphogenetic programs that remain more active in thin biofilm, reflecting the transition from a dynamic intermediate state to a fully established, stress‑adapted velum.
