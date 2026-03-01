@@ -1,1 +1,32 @@
+######################################################
+Global Heatmap across all stages 
+The global heatmap shows a strong, stage‑dependent structure in gene expression, and it shows the same biological patterns observed in the PCA.
+Early biofilm samples show higher expression of glycolytic and growth‑associated genes and lower expression of stress‑response and mitochondrial genes. Thin biofilm samples occupy an intermediate state, with partial activation of oxidative‑stress pathways and some downregulation of nutrient transporters. Mature biofilm samples show strong induction of FLO11‑associated adhesion pathways, sulfur metabolism, mitochondrial genes, and protein‑quality‑control systems, along with repression of glycolysis and transporter activity.
 
+Hierarchical clustering of both genes and samples reinforces the presence of distinct, stage‑specific transcriptional programs.
+Large coordinated blocks of up‑ and down‑regulated genes correspond to the metabolic shift away from glycolysis, the progressive activation of oxidative and stress‑response pathways, and the extensive remodeling associated with mature velum formation. 
+This structured clustering pattern demonstrates that transcriptomic differences between stages are broad and systematic, providing a strong foundation for the differential expression and functional enrichment analyses.
+
+####################################################
+Mature vs Early Biofilm Heatmap
+The heatmap comparing mature and early biofilm stages reveals a clear and coordinated shift in gene expression that reflects the major physiological transition described in the paper. 
+Mature samples cluster distinctly from early samples, with thin biofilm samples occupying an intermediate position, indicating a progressive developmental trajectory. 
+Genes that are highly expressed in early biofilm show marked downregulation in mature samples, consistent with reduced glycolytic activity, nutrient transport, and growth‑associated functions. 
+Conversely, genes strongly induced in mature biofilm include those involved in mitochondrial activity, sulfur metabolism, protein quality control, and FLO11‑associated adhesion pathways, reflecting the shift toward a respiratory, stress‑adapted, biofilm‑forming state. 
+The coherent expression blocks and clean sample clustering demonstrate that the transition from early to mature biofilm involves broad, systematic transcriptional reprogramming.
+
+#####################################################
+Thin vs Early Biofilm Heatmap
+The heatmap comparing thin and early biofilm stages reveals a distinct but more moderate transcriptional shift than the contrast observed between mature and early samples. 
+Thin biofilm samples cluster separately from early samples, yet remain closer to early than to mature, reflecting their role as a transitional developmental state. 
+Genes that are downregulated in thin biofilm relative to early include several glycolytic and growth‑associated genes, indicating the beginning of the metabolic shift away from fermentative activity.
+Conversely, genes that are upregulated in thin biofilm show partial activation of oxidative‑stress pathways, mitochondrial functions, and selected transporters, consistent with the yeast adapting to increasing oxidative pressure and nutrient limitation at the wine surface. 
+The mixed expression patterns across gene clusters highlight that the thin biofilm stage represents an intermediate physiological state, with some early‑stage signatures still present while key stress‑response and metabolic‑reprogramming pathways begin to emerge.
+
+####################################################
+Thin vs Mature Biofilm Heatmap
+The heatmap comparing thin and mature biofilm stages highlights a pronounced transcriptional shift as the biofilm progresses toward full maturation. 
+Mature samples cluster distinctly from thin samples, reflecting the strong activation of late-stage pathways associated with oxidative metabolism, sulfur assimilation, protein quality control, and FLO11‑mediated adhesion. 
+Genes that remain moderately expressed in thin biofilm become strongly upregulated in mature samples, indicating the full establishment of the respiratory, stress‑adapted phenotype characteristic of velum formation. 
+Several genes that retain higher expression in thin biofilm show reduced expression in mature samples, consistent with the continued decline of glycolytic activity, nutrient transport, and growth‑associated functions. 
+The structured gene clusters and clear sample separation demonstrate that thin biofilm represents a transitional state, while mature biofilm reflects a fully reprogrammed transcriptional profile optimized for long‑term survival in the ethanol‑rich, oxygen‑limited wine surface environment.
