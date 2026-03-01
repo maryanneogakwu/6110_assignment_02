@@ -31,8 +31,8 @@ This bulk RNAseq analysis will involve the transcript quantification, Differenti
 ## Dependencies and Packages
 | Tool | Version | Source | Purpose |
 |------|---------|--------|---------|
-| SRA Toolkit | 3.3.0 |       | Raw data download |
-| Salmon | 1.10.3 |          |Transcript quantification |
+| SRA Toolkit | 3.3.0 | NCBI | Raw data download |
+| Salmon | 1.10.3 | COMBINE-lab |Transcript quantification |
 | R | 4.5.1 | CRAN | Statistical analysis |
 | DESeq2 | 1.48.2 | BioC 3.21 |Differential expression |
 | tximport | 1.36.1 | BioC 3.21 | Count matrix import |
