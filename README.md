@@ -42,6 +42,7 @@ This bulk RNAseq analysis will involve the transcript quantification, Differenti
 | readr | 2.2.0 | CRAN | Reading data |
 | rtracklayer | 1.68.0 | BioC 3.21| R interface to Genome Annotation files |
 | apeglm | 1.30.0 | BioC 3.21 | GLM models for Statistics |
+| clusterProfiler | 4.16.0 | BioC 3.21 | GO enrichment ORA |
 
 
 ## References
