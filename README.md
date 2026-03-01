@@ -39,6 +39,11 @@ It is expected that the GO  enrichment will highlight oxidative phosphorylation,
 
 ---
 ## Conclusion
+The results observed in the original paper and results from this bulk RNA seq analysis show a clear, staged progression in flor‑yeast biofilm development, moving from a fermentative, growth‑oriented early state to a metabolically reprogrammed thin stage and finally to the fully oxidative, stress‑adapted mature velum.  
+
+Across PCA, MA plots, volcano plots, and GO enrichment analyses, early biofilm is defined by high glycolytic activity, rapid carbon and nucleotide turnover, and strong biosynthetic demand. As cells transition into the thin biofilm, they begin upregulating translation, ribosome biogenesis, amino‑acid synthesis, and early mitochondrial functions, marking a dynamic intermediate phase where metabolic capacity expands and respiratory pathways begin to activate. The mature biofilm stage completes this shift, showing strong induction of mitochondrial organization, aerobic respiration, protein‑quality‑control pathways, and extensive remodeling of membrane and metabolic processes, while simultaneously downregulating growth‑associated, nutrient‑responsive, and catabolic pathways.  
+
+Together, these results depict biofilm development as a coordinated metabolic and structural reprogramming trajectory, culminating in a mature state optimized for long‑term survival at the air–liquid interface.
 
 ---
 ## Dependencies and Packages
