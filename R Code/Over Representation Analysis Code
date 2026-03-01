@@ -1,0 +1,118 @@
+# ---------------------- Functional Annotation using ORA ------------------
+#Functional annotation was performed using GO over-representation analysis (ORA) implemented in clusterProfile
+#Doing enrichment for Upregulated and Downregulated genes respectively
+
+#Yeast annotation database
+BiocManager::install("org.Sc.sgd.db")
+
+sig_up_mature <- rownames(resLFC_mature[
+  resLFC_mature$padj < 0.05 &
+    resLFC_mature$log2FoldChange > 0, ])
+
+sig_down_mature <- rownames(resLFC_mature[
+  resLFC_mature$padj < 0.05 &
+    resLFC_mature$log2FoldChange < 0, ])
+
+#Running GO Enrichment for up regulated genes
+ego_up_mature <- enrichGO(
+  gene          = sig_up_mature,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+#Running GO Enrichment for down regulated genes
+ego_down_mature <- enrichGO(
+  gene          = sig_down_mature,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+head(ego_up_mature)
+head(ego_down_mature)
+
+#Visualization for up regulated genes
+barplot(ego_up_mature, showCategory = 15) +
+  ggtitle("GO Biological Enrichment: Mature vs Early Biofilm (Upregulated Genes)")
+#Visualization for down regulated genes
+barplot(ego_down_mature, showCategory = 15) +
+  ggtitle("GO Biological Enrichment: Mature vs Early Biofilm (Downregulated Genes)")
+
+#******************************************
+#Early vs Thin
+sig_up_thin <- rownames(resLFC_thin[
+  resLFC_thin$padj < 0.05 &
+    resLFC_thin$log2FoldChange > 0, ])
+
+sig_down_thin <- rownames(resLFC_thin[
+  resLFC_thin$padj < 0.05 &
+    resLFC_thin$log2FoldChange < 0, ])
+
+#Running GO Enrichment for Up regulated genes
+ego_up_thin <- enrichGO(
+  gene          = sig_up_thin,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+#Running GO Enrichment for down regulated genes
+ego_down_thin <- enrichGO(
+  gene          = sig_down_thin,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+
+head(ego_up_thin)
+head(ego_down_thin)
+#Visualization for up regulated genes
+barplot(ego_up_thin, showCategory = 15) +
+  ggtitle("GO Biological Enrichment: Thin vs Early Biofilm (Upregulated Genes)")
+#Visualization for down regulated genes
+barplot(ego_down_thin, showCategory = 15) +
+  ggtitle("GO Biological Enrichment: Thin vs Early Biofilm (Downregulated Genes)")
+
+#**********************************************************
+#Thin to Mature
+sig_up_inter <- rownames(resLFC_inter[
+  resLFC_inter$padj < 0.05 &
+    resLFC_inter$log2FoldChange > 0, ])
+
+sig_down_inter <- rownames(resLFC_inter[
+  resLFC_inter$padj < 0.05 &
+    resLFC_inter$log2FoldChange < 0, ])
+
+#Running GO Enrichment for up regulated genes
+ego_up_inter <- enrichGO(
+  gene          = sig_up_inter,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",  
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+
+head(ego_up_inter)
+
+#Running GO Enrichment for down regulated genes
+ego_down_inter <- enrichGO(
+  gene          = sig_down_inter,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",      
+  ont           = "BP",       
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05
+)
+#Visualization for up regulated genes
+barplot(ego_up_inter, showCategory = 15) +
+          ggtitle("GO Biological Enrichment: Thin vs Mature Biofilm (Upregulated Genes)")
+#Visualization for up regulated genes
+barplot(ego_down_inter, showCategory = 15) +
+  ggtitle("GO Biological Enrichment: Thin vs Mature (Downregulated Genes)")
