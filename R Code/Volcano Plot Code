@@ -1,0 +1,66 @@
+# -------------------- Volcano Plots ----------------------
+#Marking genes that are observed as upregulated, downregulated, and not significant 
+#We'll also exclude genes with under 2-fold change (log2FoldChange < 1)
+
+#Thin vs Early volcano plot
+res_df_thin <- as.data.frame(resLFC_thin)
+res_df_thin$gene <- rownames(res_df_thin)
+
+res_df_thin$significant <- ifelse(res_df_thin$padj < 0.05 &
+                                  abs(res_df_thin$log2FoldChange) > 1,
+                                ifelse(res_df_thin$log2FoldChange > 0,
+                                       "Up", "Down"),
+                                "Not Sig")
+
+res_df_thin <- na.omit(res_df_thin)
+
+ggplot(res_df_thin, aes(x = log2FoldChange,
+                   y = -log10(pvalue),
+                   color = significant)) +
+  geom_point() +
+  scale_color_manual(values = c("Down"="blue",
+                                "Not Sig"="gray",
+                                "Up"="red")) +
+  labs(title="Volcano Plot: Thin vs Early")
+
+#Mature vs Early volcano plot
+res_df_mature <- as.data.frame(resLFC_mature)
+res_df_mature$gene <- rownames(res_df_mature)
+
+res_df_mature$significant <- ifelse(res_df_mature$padj < 0.05 &
+                                  abs(res_df_mature$log2FoldChange) > 1,
+                                ifelse(res_df_mature$log2FoldChange > 0,
+                                       "Up", "Down"),
+                                "Not Sig")
+
+res_df_mature <- na.omit(res_df_mature)
+
+ggplot(res_df_mature, aes(x = log2FoldChange,
+                      y = -log10(pvalue),
+                      color = significant)) +
+  geom_point() +
+  scale_color_manual(values = c("Down"="blue",
+                                "Not Sig"="gray",
+                                "Up"="red")) +
+  labs(title="Volcano Plot: Mature vs Early")
+
+#Thin vs Mature volcano plot
+res_df_inter <- as.data.frame(resLFC_inter)
+res_df_inter$gene <- rownames(res_df_inter)
+
+res_df_inter$significant <- ifelse(res_df_inter$padj < 0.05 &
+                                  abs(res_df_inter$log2FoldChange) > 1,
+                                ifelse(res_df_inter$log2FoldChange > 0,
+                                       "Up", "Down"),
+                                "Not Sig")
+
+res_df_inter <- na.omit(res_df_inter)
+
+ggplot(res_df_inter, aes(x = log2FoldChange,
+                      y = -log10(pvalue),
+                      color = significant)) +
+  geom_point() +
+  scale_color_manual(values = c("Down"="blue",
+                                "Not Sig"="gray",
+                                "Up"="red")) +
+  labs(title="Volcano Plot: Thin vs Mature")
