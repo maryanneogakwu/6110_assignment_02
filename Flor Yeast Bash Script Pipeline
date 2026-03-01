@@ -1,0 +1,65 @@
+##################################################################################
+Data Acquisition
+
+Downloading the SRR numbers using SRA-tools
+The accension numbers used in the yeast study: SRR10551657, SRR10551658, SRR10551659, SRR10551660, SRR10551661, SRR10551662, SRR10551663, SRR10551664, SRR10551665.
+
+for i in SRR10551657 SRR10551658 SRR10551659 SRR10551660 SRR10551661 SRR10551662 SRR10551663 SRR10551664 SRR10551665
+do
+prefetch $i
+fasterq-dump $i --split-files -e 8
+done
+
+Downloading the genome files
+This is to download the Transcriptome fasta. This file contains the entire genome, chromosomes, Intergenic regions and unnanotated regions.
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.fna.gz
+
+Downloading the RNA file. It contains all annotated transcript sequences, mRNA sequences and other data we want to quantify.
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_rna.fna.gz
+
+Download the genome fasta. This will be used downstream in converting transcript counts to gene counts, differential expression analysis and genome visualization. 
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.gff.gz
+gunzip *.gz
+
+#####################################################################################
+Salmon installation and environment setup
+
+conda create -n salmon
+conda activate salmon
+conda install bioconda::salmon
+salmon —version
+
+Creating a decoy aware index
+Extracting the chromosome names from the genome. Salmon indexing requires the names of the genome targets, which is extractable by using the grep command:
+grep "^>" GCF_000146045.2_R64_genomic.fna | cut -d " " -f1 | sed 's/>//' > decoys.txt
+
+Combining the transcriptome and genome. “Gentrome” = genome + transcriptome
+cat GCF_000146045.2_R64_rna.fna GCF_000146045.2_R64_genomic.fna > gentrome.fa
+
+Building an Index
+It is Important to build a decoy genome for the Yeast RNA-seq because Saccharomyces cerevisiae has a small genome but it has repetitive regions, intergenic regions and has potential mis-mapping.
+So using decoys improves accuracy, mapping specificity and reliability of differential expression.
+salmon index \
+-t gentrome.fa \
+-d decoys.txt \
+-i salmon_index \
+-k 31
+
+################################################################################
+Quantification using Salmon
+INDEX=salmon_index
+THREADS=8
+
+for fq in *_1.fastq
+do
+  base=$(basename ${fq} _1.fastq)
+  salmon quant \
+  -i salmon_index \
+  -l A \
+  -r ${fq} \
+  -p ${THREADS} \
+  -o ${base}_salmon \
+  --seqBias \
+  --useVBOpt \
+  --validateMappings
+done
