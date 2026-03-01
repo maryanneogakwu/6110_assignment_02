@@ -1,1 +1,9 @@
+PCA Plot Explanation
+The plot shows a clear meaningful separation between the three biofilm stages.
+The PCA plot shows strong separation between early, thin, and mature biofilm samples, with PC1 (71% variance) distinguishing early biofilm from the later stages and PC2 (24% variance) separating thin from mature biofilm. This indicates that each developmental stage has a distinct global transcriptomic profile.
 
+PC1 cleanly separates Early from Thin and Mature biofilm samples. This reflects the major metabolic shift away from glycolysis toward oxidative metabolism.
+
+PC2 separates Thin from Mature biofilm samples. This likely corresponds to the increasing activation of stress‑response, sulfur metabolism, and FLO11‑associated biofilm genes.
+
+The clear clustering reflects the major metabolic and stress‑response reprogramming described in the paper, supporting the expectation that differential expression analysis will reveal stage‑specific gene expression patterns.
