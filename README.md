@@ -45,10 +45,10 @@ This bulk RNAseq analysis will involve the transcript quantification, Differenti
 
 
 ## References
-Combine-lab (Stony Brook University). (2019, October 30). Selective alignment. https://combine-lab.github.io/alevin-tutorial/2019/selective-alignment/
+Combine-lab (Stony Brook University). (2019). Selective alignment. https://combine-lab.github.io/alevin-tutorial/2019/selective-alignment/
 
 Salmon - Salmon 1.10.2 documentation. (n.d.). https://salmon.readthedocs.io/en/latest/salmon.html
 
-Patro, R., Duggal, G., Love, M. et al. Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419 (2017). https://doi.org/10.1038/nmeth.4197
+Patro, R., Duggal, G., Love, M. et al. (2017). Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419. https://doi.org/10.1038/nmeth.4197
 
 ##
