@@ -120,12 +120,88 @@ The sample data had the following groups:
 -  Stage_Thin.biofilm_vs_Mature.biofilm
 
 ### 4. Visualization of Data Structure
-Overall data structure was assessed using models constructed with the apeglm package (v1.30.0) to determine gene expression changes across each stage using Heatmaps and PCA. Data was computed from variance-stabilizing transformed (VST) counts using the DESeq2 vst() function. 
+Overall data structure was assessed using models constructed with the apeglm package (v1.30.0) to determine gene expression changes across each stage using Heatmaps and PCA. Data was computed from variance-stabilizing transformed (VST) counts using the DESeq2 vst() function. Log₂ fold change shrinkage was applied using the apeglm method to obtain more accurate and stable effect size estimates, particularly for low-count genes. Shrinkage reduces exaggerated fold change estimates while preserving directionality, improving interpretability of downstream analyses such as heatmaps and functional enrichment.
+```
+res_mature <- results(dds,
+                      contrast=c("Stage","Mature biofilm","Early biofilm"))
 
-A heatmap was constructed from normalized count data, scaled by row to emphasize relative expression differences, with hierarchical clustering of both rows (genes) and columns (samples), and stage annotation included to visualize transcriptional patterns across biofilm development.
+resLFC_mature <- lfcShrink(dds,
+                    coef="Stage_Mature.biofilm_vs_Early.biofilm",
+                    type="apeglm")
+```
+#### Heatmaps
+Heatmaps were constructed from normalized count data, scaled by row to emphasize relative expression differences, with hierarchical clustering of both rows (genes) and columns (samples), and stage annotation included to visualize transcriptional patterns across biofilm development.   
+```
+pheatmap(mat,
+         scale = "row",
+         cluster_rows = TRUE,
+         cluster_cols = TRUE,
+         annotation_col = annotation_df,
+         show_rownames = FALSE,
+         show_colnames = FALSE,
+         fontsize = 8)
+```
+#### MA plot
+MA plots were generated using DESeq2 to visualize the relationship between mean normalized expression (baseMean) and log₂ fold change for each gene. The x-axis represents the average normalized expression across samples, while the y-axis shows the log₂ fold change between biofilm stages. Differentially expressed genes were identified using Wald tests with Benjamini–Hochberg adjusted p-values (padj < 0.05). Both unshrunk and shrinkage-estimated log₂ fold changes (apeglm method) were examined to reduce variance inflation in low-count genes and improve effect size estimation.  
+```
+plotMA(res_mature,
+       ylim=c(-2,2),
+       main="Mature vs Early Unshrunk")
+
+plotMA(resLFC_mature,
+       ylim=c(-2,2),
+       main="Mature vs Early Shrunk")
+```
+#### PCA
+Principal Component Analysis (PCA) was performed on variance-stabilized transformed (VST) count data to assess global transcriptomic structure and sample clustering. PCA reduces high-dimensional gene expression data into orthogonal components that capture the largest sources of variance. The percentage of variance explained by each principal component was calculated, and samples were colored by biofilm stage to evaluate stage-specific clustering and replicate consistency.  
+```
+ggplot(pca_data,
+       aes(x = PC1, y = PC2, color = Stage)) +
+  geom_point(size = 6) +
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  ggtitle("PCA Plot of Biofilm Stages") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+#### Volcano Plot
+Volcano plots were constructed to visualize differential expression by plotting log₂ fold change on the x-axis against −log₁₀(adjusted p-value) on the y-axis. Genes with padj < 0.05 were considered statistically significant, and additional fold change thresholds (e.g., |log₂FC| > 1) were applied to highlight biologically meaningful expression changes. This visualization enables simultaneous assessment of effect size and statistical significance across all genes.
+```
+res_df_mature$significant <- ifelse(res_df_mature$padj < 0.05 &
+                                  abs(res_df_mature$log2FoldChange) > 1,
+                                ifelse(res_df_mature$log2FoldChange > 0,
+                                       "Up", "Down"),
+                                "Not Sig")
+ggplot(res_df_mature, aes(x = log2FoldChange,
+                      y = -log10(pvalue),
+                      color = significant)) +
+  geom_point() +
+  scale_color_manual(values = c("Down"="blue",
+                                "Not Sig"="gray",
+                                "Up"="red")) +
+  labs(title="Volcano Plot: Mature vs Early")
+```
 
 ### 5. Functional Annotation - Over Representation Analysis (ORA)
-Functional annotation was performed using GO over-representation analysis (ORA) implemented in clusterProfile (v4.16.0)
+Functional enrichment analysis was performed using Gene Ontology (GO) over-representation analysis (ORA) implemented in clusterProfiler. Significant genes (padj < 0.05) were separated into upregulated (log₂FC > 0) and downregulated (log₂FC < 0) groups for each comparison. Enrichment significance was calculated using hypergeometric testing with Benjamini–Hochberg correction (qvalue < 0.05). This analysis identifies biological processes that are statistically over-represented among differentially expressed genes relative to the genomic background.
+```
+ego_up_mature <- enrichGO(
+  gene          = sig_up_mature,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05)
+
+ego_down_mature <- enrichGO(
+  gene          = sig_down_mature,
+  OrgDb         = org.Sc.sgd.db,
+  keyType       = "ORF",   
+  ont           = "BP",    
+  pAdjustMethod = "BH",
+  qvalueCutoff  = 0.05)
+```
+
 
 ---
 
