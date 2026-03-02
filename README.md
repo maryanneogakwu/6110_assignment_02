@@ -14,7 +14,7 @@ The _Saccharomyces cerevisiae_ data set (Accession: PRJNA592304 ID: 592304) used
 
 The study was applied to an RNAseq analysis for transcriptome analysis of the structural and functional changes industrial Flor yeast strain exhibited at different stages of velum formation during Sherry wine production. The study's experimental design involved monitoring gene expression levels and changes in gene expression at three stages: Early Biofilm formation, Thin Biofilm Formation and Mature Biofilm Formation. Samples were taken in biological replicates or three and analysed. 
 
-This bulk RNAseq analysis will involve the transcript quantification, Differential Expression analysi, Functional Annotation and ORA/GSEA to detremine the changes in gene expression from Early to Mature stages of flor formation.
+This bulk RNAseq analysis will involve the transcript quantification, Differential Expression analysis, Functional Annotation and ORA/GSEA to determine the changes in gene expression from Early to Mature stages of flor formation.
 
 ----
 ## Expected Results
@@ -29,7 +29,7 @@ Based on the paper, this bulk RNAseq differential expression analysis should rev
 
 It is expected that the GO  enrichment will highlight oxidative phosphorylation, mitochondrial biogenesis, sulfur metabolism, protein folding, and stress‑response pathways among upregulated genes, and glycolysis, sugar transport, and amino‑acid transport among downregulated genes.
 
-#### Differntial Gene Expression Mature vs Early Biofilm Comparison
+#### Differnetial Gene Expression Mature vs Early Biofilm Comparison
 Below is a summarised list of the genes found in the study and the roles they played in biofilm production.
 
 | Pathway | Up (n) | Example Up Genes | Down (n) | Example Down Genes | No Change (n) |
@@ -52,8 +52,8 @@ Below is a summarised list of the genes found in the study and the roles they pl
 ----
 
 ## Methods
-### 1. Data Acquistion 
-Raw sequence reads _Saccharomyces cerevisiae_ related to the Flor yeast study (3 biofilm stages; Early, Thin, Mature biofilm, and 3 biological replicates of each stage) were downloaded from the NCBI Sequence Read Archive (Accession: PRJNA592304 ID: 592304) using SRA Toolkit (v3.3.0). Samples and their corresponding accension numbers:
+### 1. Data Acquisition 
+Raw sequence reads _Saccharomyces cerevisiae_ related to the Flor yeast study (3 biofilm stages; Early, Thin, Mature biofilm, and 3 biological replicates of each stage) were downloaded from the NCBI Sequence Read Archive (Accession: PRJNA592304 ID: 592304) using SRA Toolkit (v3.3.0). Samples and their corresponding accenssion numbers:
 
 
 | Sample |	Sample ID |	Stage |
@@ -68,7 +68,7 @@ Raw sequence reads _Saccharomyces cerevisiae_ related to the Flor yeast study (3
 | SRR10551658	| IL30	| Mature biofilm |
 | SRR10551657	| IL31	| Mature biofilm |
 
-Based on recommendations by Liao and Shi (2020), adapter trimming was not performed prior to pseudo alignment quantification. Trimming is necessary when carrying out transcriptome assembly but not recommended to be done before gene expression quantification. Salmon, that will be used for gene expression quantification can automatically soft-clip or ignore bad ends. So trimming is not necessary for this workflow.
+Based on recommendations by Liao and Shi (2020), adapter trimming was not performed prior to pseudo alignment quantification. Trimming is necessary when carrying out transcriptome assembly but not recommended to be done before gene expression quantification. Salmon, that was used for gene expression quantification can automatically soft-clip or ignore bad ends. So trimming is not necessary for this workflow.
 
 ### 2. Transcript Quantification
 Transcript Quantification was performed using Salmon (v1.10.3) in mapping-based mode without full alignment (quasi mapping mode). A decoy aware transcriptome index was built from the _Saccharomyces cerevisiae_ S288C, NCBI RefSeq assembly GCF_000146045.2 using a k-mer length of  31. The index was built with the code below and each sample was quantified with the parameters below. Protocol for running salmon was adapted from Salmon documentation and Stony Brook University Combine-lab (2019) documentation.
@@ -210,7 +210,7 @@ ego_down_mature <- enrichGO(
 ---
 
 ## Results
-**Statistical Tests and visualizations were carried out for each stage of the big film formation, namely: Mature vs Early, Mature vs Thin and Thin vs Early. The models discussed here (Mature vs Early) best reflect the gene expression changes from begging to end of the biofilm formation, with exception of the PCA and Global Heatmap plots that are used to represent overall dataset structure and architechture. The extra plots and discussions of the plots can be found in the Figures directory and in the corresponding plot folders. These were not included in the README.md file for the sake of brevity.**
+**Statistical Tests and visualizations were carried out for each stage of the biofilm formation, namely: Mature vs Early, Mature vs Thin and Thin vs Early. The models discussed here (Mature vs Early) best reflect the gene expression changes from beginning to end of the biofilm formation, with exception of the PCA and Global Heatmap plots that are used to represent overall dataset structure and architechture. The extra plots and discussions of the plots can be found in the Figures directory and in the corresponding plot folders. These were not included in the README.md file for the sake of brevity.**
 
 
 #### PCA for observing general data structure
@@ -249,10 +249,10 @@ Early biofilm cells rely on glycolysis and growth‑associated pathways, while m
 
 ### Over Representation Analysis
 
-#### GO Erichment of Upregulated genes - Mature vs Early biofilm
+#### GO Enrichment of Upregulated genes - Mature vs Early biofilm
 <img width="1200" height="800" alt="GO Mature vs Early upregulated genes" src="https://github.com/user-attachments/assets/bd073f63-d7d8-43d8-8852-b86c11d99fd5" />  
 
-**Figure 5.** These results show  a tightly connected set of processes centered on mitochondrial function, respiration, and protein quality control, capturing the core shift that defines mature biofilm physiology. Many of the most enriched categories involve mitochondrion organization, mitochondrial translation, respiratory chain complex assembly, and aerobic respiration, reflecting a strong activation of oxidative metabolism as cells transition away from the fermentative, growth‑oriented early stage. Additional terms related to protein folding, proteasomal protein catabolism, and modification‑dependent degradation highlight increased investment in maintaining proteome integrity under the stressful conditions. The repeated appearance of mitochondrial membrane and inner‑membrane organization terms reinforces the idea that mature biofilm cells undergo substantial remodeling of their respiratory machinery. 
+**Figure 5.** These results show a tightly connected set of processes centered on mitochondrial function, respiration, and protein quality control, capturing the core shift that defines mature biofilm physiology. Many of the most enriched categories involve mitochondrion organization, mitochondrial translation, respiratory chain complex assembly, and aerobic respiration, reflecting a strong activation of oxidative metabolism as cells transition away from the fermentative, growth‑oriented early stage. Additional terms related to protein folding, proteasomal protein catabolism, and modification‑dependent degradation highlight increased investment in maintaining proteome integrity under the stressful conditions. The repeated appearance of mitochondrial membrane and inner‑membrane organization terms reinforces the idea that mature biofilm cells undergo substantial remodeling of their respiratory machinery. 
 Together, these results show that mature biofilm formation is driven by a coordinated upregulation of energy production, mitochondrial biogenesis, and protein‑quality‑control pathways that support long‑term survival and adhesion at the air–liquid interface.
 
 #### GO Enrichment of Downregulated genes - Mature vs Early biofilm
@@ -315,34 +315,34 @@ Together, these results depict biofilm development as a coordinated metabolic an
 
 
 ## References
-- Alexandre H. (2013). Flor yeasts of Saccharomyces cerevisiae--their ecology, genetics and metabolism. International journal of food microbiology, 167(2), 269–275. https://doi.org/10.1016/j.ijfoodmicro.2013.08.021
+- Alexandre H. (2013). Flor yeasts of Saccharomyces cerevisiae--their ecology, genetics and metabolism. International journal of food microbiology, 167(2), 269–275. https://doi.org/10.1016/j.ijfoodmicro.2013.08.021.
 
-- Barny, L. A., & Plate, L. (2025). From stress to homeostasis: Mass spectrometry–based insights into the unfolded protein response (UPR) and proteostasis. Advances in Biological Regulation, 99, 101127. https://doi.org/10.1016/j.jbior.2025.101127
+- Barny, L. A., & Plate, L. (2025). From stress to homeostasis: Mass spectrometry–based insights into the unfolded protein response (UPR) and proteostasis. Advances in Biological Regulation, 99, 101127. https://doi.org/10.1016/j.jbior.2025.101127.
 
-- Bars, R. L., Marion, J., Borgne, R. L., Satiat-Jeunemaitre, B., & Bianchi, M. W. (2014). ATG5 defines a phagophore domain connected to the endoplasmic reticulum during autophagosome formation in plants. Nature Communications, 5(1), 4121. https://doi.org/10.1038/ncomms5121
+- Bars, R. L., Marion, J., Borgne, R. L., Satiat-Jeunemaitre, B., & Bianchi, M. W. (2014). ATG5 defines a phagophore domain connected to the endoplasmic reticulum during autophagosome formation in plants. Nature Communications, 5(1), 4121. https://doi.org/10.1038/ncomms5121.
 
-- Casamassimi, A., & Ciccodicola, A. (2019). Transcriptional Regulation: Molecules, Involved Mechanisms, and Misregulation. International journal of molecular sciences, 20(6), 1281. https://doi.org/10.3390/ijms20061281
+- Casamassimi, A., & Ciccodicola, A. (2019). Transcriptional Regulation: Molecules, Involved Mechanisms, and Misregulation. International journal of molecular sciences, 20(6), 1281. https://doi.org/10.3390/ijms20061281.
 
-- Combine-lab (Stony Brook University). (2019). Selective alignment. https://combine-lab.github.io/alevin-tutorial/2019/selective-alignment/
+- Combine-lab (Stony Brook University). (2019). Selective alignment. https://combine-lab.github.io/alevin-tutorial/2019/selective-alignment/.
 
-- Li, A., Gao, M., Liu, B. et al. Mitochondrial autophagy: molecular mechanisms and implications for cardiovascular disease. Cell Death Dis 13, 444 (2022). https://doi.org/10.1038/s41419-022-04906-6
+- Li, A., Gao, M., Liu, B. et al. Mitochondrial autophagy: molecular mechanisms and implications for cardiovascular disease. Cell Death Dis 13, 444 (2022). https://doi.org/10.1038/s41419-022-04906-6.
 
-- Rather, M. A., Gupta, K., & Mandal, M. (2021). Microbial biofilm: formation, architecture, antibiotic resistance, and control strategies. Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology], 52(4), 1701–1718. https://doi.org/10.1007/s42770-021-00624-x
+- Rather, M. A., Gupta, K., & Mandal, M. (2021). Microbial biofilm: formation, architecture, antibiotic resistance, and control strategies. Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology], 52(4), 1701–1718. https://doi.org/10.1007/s42770-021-00624-x.
 
-- Salmon - Salmon 1.10.2 documentation. (n.d.). https://salmon.readthedocs.io/en/latest/salmon.html
+- Salmon - Salmon 1.10.2 documentation. (n.d.). https://salmon.readthedocs.io/en/latest/salmon.html.
 
-- Malviya, J., Alameri, A.A., Al-Janabi, S.S. et al. Metabolomic profiling of bacterial biofilm: trends, challenges, and an emerging antibiofilm target. World J Microbiol Biotechnol 39, 212 (2023). https://doi.org/10.1007/s11274-023-03651-y
+- Malviya, J., Alameri, A.A., Al-Janabi, S.S. et al. Metabolomic profiling of bacterial biofilm: trends, challenges, and an emerging antibiofilm target. World J Microbiol Biotechnol 39, 212 (2023). https://doi.org/10.1007/s11274-023-03651-y.
 
-- Mardanov AV, Eldarov MA, Beletsky AV, Tanashchuk TN, Kishkovskaya SA and Ravin NV (2020) Transcriptome Profile of Yeast Strain Used for Biological Wine Aging Revealed Dynamic Changes of Gene Expression in Course of Flor Development. Front. Microbiol. 11:538. doi: 10.3389/fmicb.2020.00538
+- Mardanov AV, Eldarov MA, Beletsky AV, Tanashchuk TN, Kishkovskaya SA and Ravin NV (2020) Transcriptome Profile of Yeast Strain Used for Biological Wine Aging Revealed Dynamic Changes of Gene Expression in Course of Flor Development. Front. Microbiol. 11:538. doi: 10.3389/fmicb.2020.00538.
 
-- Mardanov, A. V., Gruzdev, E. V., Beletsky, A. V., Ivanova, E. V., Shalamitskiy, M. Y., Tanashchuk, T. N., & Ravin, N. V. (2023). Microbial Communities of Flor Velums and the Genetic Stability of Flor Yeasts Used for a Long Time for the Industrial Production of Sherry-like Wines. Fermentation, 9(4), 367. https://doi.org/10.3390/fermentation9040367
+- Mardanov, A. V., Gruzdev, E. V., Beletsky, A. V., Ivanova, E. V., Shalamitskiy, M. Y., Tanashchuk, T. N., & Ravin, N. V. (2023). Microbial Communities of Flor Velums and the Genetic Stability of Flor Yeasts Used for a Long Time for the Industrial Production of Sherry-like Wines. Fermentation, 9(4), 367. https://doi.org/10.3390/fermentation9040367.
 
-- Mori K. (2024). Elucidation of molecular mechanism of the unfolded protein response. The Keio journal of medicine, 73(1), 13. https://doi.org/10.2302/kjm.ABSTRACT_73_1-2
+- Mori K. (2024). Elucidation of molecular mechanism of the unfolded protein response. The Keio journal of medicine, 73(1), 13. https://doi.org/10.2302/kjm.ABSTRACT_73_1-2.
 
-- Niels. (2023, August 31). Sherry flor. Bodegas Lustau. https://lustau.es/en/blog/sherry-flor-the-veil-of-flor-and-what-is-flor-used-for-in-sherry/?utm_source=copilot.com
+- Niels. (2023, August 31). Sherry flor. Bodegas Lustau. https://lustau.es/en/blog/sherry-flor-the-veil-of-flor-and-what-is-flor-used-for-in-sherry/?utm_source=copilot.com.
 
-- Patro, R., Duggal, G., Love, M. et al. (2017). Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419. https://doi.org/10.1038/nmeth.4197
+- Patro, R., Duggal, G., Love, M. et al. (2017). Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419. https://doi.org/10.1038/nmeth.4197.
 
-- Taj, Z., Rani, S.S., Gundamaraju, R., Chattopadhyay, I. (2025). Genomic Insights into the Field of Biofilm Research. In: Busi, S., Pattnaik, S., Prasad, R. (eds) Omics Approaches in Biofilm Research. Springer, Cham. https://doi.org/10.1007/978-3-031-91863-6_5
+- Taj, Z., Rani, S.S., Gundamaraju, R., Chattopadhyay, I. (2025). Genomic Insights into the Field of Biofilm Research. In: Busi, S., Pattnaik, S., Prasad, R. (eds) Omics Approaches in Biofilm Research. Springer, Cham. https://doi.org/10.1007/978-3-031-91863-6_5.
 
 - Yang Liao, Wei Shi, Read trimming is not required for mapping and quantification of RNA-seq reads at the gene level, NAR Genomics and Bioinformatics, Volume 2, Issue 3, September 2020, lqaa068, https://doi.org/10.1093/nargab/lqaa068
