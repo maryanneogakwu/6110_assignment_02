@@ -27,6 +27,26 @@ Based on the paper, this bulk RNAseq differential expression analysis should rev
 
 It is expected that the GO  enrichment will highlight oxidative phosphorylation, mitochondrial biogenesis, sulfur metabolism, protein folding, and stress‑response pathways among upregulated genes, and glycolysis, sugar transport, and amino‑acid transport among downregulated genes.
 
+#### Differntial Gene Expression Mature vs Early Biofilm Comparison
+Below is a summarised list of the genes found in the study and the roles they played in biofilm production.
+
+| Pathway | Up (n) | Example Up Genes | Down (n) | Example Down Genes | No Change (n) |
+|----------|--------|------------------|----------|--------------------|---------------|
+| Proteasome | 32 | PRE1, RPN9, RPT5, PRE6, UMP1 | 1 | BLM10 | 2 |
+| Protein Export | 8 | KAR2, SEC61, SRP14, SBH2 | 1 | SPC1 | 13 |
+| Vesicle Fusion | 4 | SED5, SEC9, SNC2 | 1 | VAM7 | 19 |
+| UPR & ERAD | 27 | KAR2, PDI1, SSA1, HSP82, CDC48 | 13 | IRE1, USA1, SEC12, UFD2 | 46 |
+| Autophagy | 15 | ATG8, ATG16, SNF1, PEP4 | 31 | TOR1, TOR2, ATG7, ATG5 | 38 |
+| Mitophagy | 7 | ATG33, FIS1, MDM34 | 7 | ATG32, TOR1, TOR2 | 29 |
+| DSB Repair | 5 | RAD54, RAD59, POL32 | 2 | TEL1, POL3 | 13 |
+| DNA Replication | 2 | POL32, POL30 | 4 | MCM3, MCM4, POL3 | 25 |
+| Mismatch Repair | 5 | EXO1, MSH3, POL30 | 1 | POL3 | 14 |
+| Nucleotide Excision Repair | 6 | RAD23, POL30, TFB3 | 6 | RAD4, RAD1, SSL1 | 24 |
+| Ribosome | 73 | RPL10, RPS3, RPL24a, RPS16a | 3 | RPS0b, RPL8a | 56 |
+| Ribosome Biogenesis | 17 | NOP56, RIO1, UTP9, POP6 | 8 | NOG1, UTP22 | 46 |
+| RNA Polymerase | 8 | RPB4, RPB11, RPC31 | 2 | RPO31, RPA190 | 19 |
+| Basal Transcription Factors | 12 | TAF10, TAF8, SPT15, TFB3 | 3 | TAF2, SSL1 | 16 |
+| Cell Cycle Regulators | 20 | CLN1, CLN2, CDC20, SWI5 | 19 | CLN3, MCM3, ORC1 | 87 |
 ----
 
 ## Methods
