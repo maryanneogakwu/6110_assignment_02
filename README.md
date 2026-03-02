@@ -49,7 +49,7 @@ Raw sequence reads _Saccharomyces cerevisiae_ related to the Flor yeast study(3 
 Based on recommendations by Lioa and Shi  (2020), adapter trimming was not performed prior to pseudo alignment quantification. Trimming is necessary when carrying out transcriptome assembly but not recommended to be done before gene expression quantification. Salmon, that will be used for gene expression quantification can automatically soft-clip or ignore bad ends. So trimming is not necessary for this workflow.
 
 ### 2. Transcript Quantification
-Transcript Quantification was performed using Salmon (v1.10.3) in . A decoy aware transcriptome index was built from the _Saccharomyces cerevisiae_ S288C, NCBI RefSeq assembly GCF_000146045.2 using a k-mer length of  31. The index was built with the code below and each sample was quantified with the parameters below.
+Transcript Quantification was performed using Salmon (v1.10.3) in mapping-based mode without full alignment (quasi mapping mode). A decoy aware transcriptome index was built from the _Saccharomyces cerevisiae_ S288C, NCBI RefSeq assembly GCF_000146045.2 using a k-mer length of  31. The index was built with the code below and each sample was quantified with the parameters below.
 
 ```
 salmon index \
@@ -93,9 +93,15 @@ dds <- DESeqDataSetFromTximport(txi,
                                 colData = sampleTable,
                                 design = ~ Stage)
 ```
-
+The sample data had the following groups:
+- Intercept 
+-  Stage_Mature.biofilm_vs_Early.biofilm
+-  Stage_Thin.biofilm_vs_Early.biofilm
+-  Stage_Thin.biofilm_vs_Mature.biofilm
 
 ### 4. Visualization of Data Structure
+Overall data structure was assessed using models constructed with the apeglm package (v1.30.0) to determine gene expression changes across each stage using Heatmaps and PCA. Data was computed from variance-stabilizing transformed (VST) counts using the DESeq2 vst() function. 
+
 
 ### 5. Functional Annotation - Over Representation Analysis (ORA)
 
@@ -103,6 +109,42 @@ dds <- DESeqDataSetFromTximport(txi,
 ---
 
 ## Results
+### PCA for observing general data structure
+<img width="1000" height="500" alt="PCA" src="https://github.com/user-attachments/assets/0f375481-7552-413c-bad9-e98c8b6b522a" />  
+
+**Figure 1.** The plot shows a clear meaningful separation between the three biofilm stages.
+The PCA plot shows strong separation between early, thin, and mature biofilm samples, with PC1 (71% variance) distinguishing early biofilm from the later stages and PC2 (24% variance) separating thin from mature biofilm. This indicates that each developmental stage has a distinct global transcriptomic profile.  
+PC1 cleanly separates Early from Thin and Mature biofilm samples. This reflects the major metabolic shift away from glycolysis toward oxidative metabolism.  
+PC2 separates Thin from Mature biofilm samples. This likely corresponds to the increasing activation of stress‑response, sulfur metabolism, and FLO11‑associated biofilm genes.  
+The clear clustering reflects the major metabolic and stress‑response reprogramming described in the paper, supporting the expectation that differential expression analysis will reveal stage‑specific gene expression patterns.
+
+
+### Global Heatmap of changes in gene expression across all stages
+<img width="1000" height="700" alt="Global heatmap across all stages" src="https://github.com/user-attachments/assets/e665fd3c-97ce-46b0-95d1-8e93418a9acc" />
+
+**Figure 2.** The heatmap shows a clear stage‑dependent structure in gene expression that mirrors the PCA patterns. Early biofilm samples cluster together with high expression of glycolytic and growth‑related genes and low expression of mitochondrial and stress‑response genes. Thin biofilm samples form an intermediate group, showing partial activation of oxidative‑stress pathways and early reductions in nutrient‑transporter activity. Mature biofilm samples form a distinct cluster characterized by strong induction of FLO11‑linked adhesion genes, sulfur and mitochondrial pathways, and protein‑quality‑control systems, along with broad repression of glycolysis and transporter genes.
+
+Hierarchical clustering reinforces these transitions, with large coordinated blocks of genes shifting from glycolytic and growth‑associated expression in early biofilm to oxidative, stress‑adapted, and adhesion‑related programs in the mature stage. This structured pattern highlights broad, systematic transcriptional reprogramming across stages and provides a strong foundation for the differential‑expression and functional‑enrichment analyses that follow.
+
+### MA Plot - Mature vs Early biofilm stages
+<img width="1000" height="500" alt="MA Plot Mature vs Early Biofilm" src="https://github.com/user-attachments/assets/4ba3ac7b-3178-4077-8f9c-3628a9712fc8" />
+
+**Figure 3.** The MA plots show a strong and widespread transcriptional shift between the two stages. In both the unshrunk and shrunk versions, a large number of genes deviate substantially from the horizontal baseline, indicating extensive differential expression. 
+Genes with higher mean normalized counts show more stable fold‑change estimates, while genes with low counts display greater variability in the unshrunk plot.
+Applying shrinkage reduces the extreme log fold‑change values for low‑abundance genes, pulling them toward zero and producing a more conservative and biologically interpretable distribution.
+The clear vertical spread of points in both plots reflects the extensive transcriptional reprogramming that occurs as the biofilm transitions from early to mature stages, consistent with the PCA and heatmap results.
+
+### Volcano Plot - Mature vs Early Biofilm 
+
+<img width="1000" height="600" alt="Volcano Plot Mature vs Early Biofilm" src="https://github.com/user-attachments/assets/94c38172-a1c5-47a7-8839-d1500282b510" />
+
+**Figure 4.** This plot shows a strong and well‑defined differential expression signature, with a large number of genes exhibiting both high statistical significance and substantial fold‑change differences. Upregulated and downregulated genes form clear clusters on opposite sides of the plot, reflecting broad transcriptional shifts between the two stages. 
+The wide horizontal spread indicates large magnitude changes in expression, while the tall vertical distribution demonstrates strong statistical support for these differences. This pattern highlights the transcriptional changes distinguishing mature from early biofilm samples.
+These results help support findings in the paper.
+Early biofilm cells rely on glycolysis and growth‑associated pathways, while mature biofilm cells adopt a respiratory, stress‑adapted, adhesion‑focused phenotype optimized for survival at the wine surface. The strong enrichment of upregulated stress‑response, mitochondrial, and sulfur‑metabolism genes in mature biofilm, paired with the repression of fermentative and nutrient‑responsive genes, visually confirms this metabolic and physiological transition.
+
+
+
 
 ----
 
