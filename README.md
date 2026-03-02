@@ -7,7 +7,7 @@ Dataset: Flor Yeast - Madanov et al. 2020, Sec. Evolutionary and Genomic Microbi
 ---
 ## Introduction
 Sherry wine is a fortified wine from southern Spain that develops its distinctive character through biological aging, where a surface film of flor yeast grows on the wine in partially filled barrels *Niels*.   
-Flor is a specialized form of Saccharomyces cerevisiae that thrives after primary fermentation is complete, surviving in high alcohol and low nutrient conditions. As it forms a protective layer on the wine, flor continues to metabolize ethanol and other compounds, shaping the dry, nutty profile typical of biologically aged sherries like Fino and Manzanilla *Alexandra and Mardano* .
+Flor is a specialized form of _Saccharomyces cerevisiae_ that thrives after primary fermentation is complete, surviving in high alcohol and low nutrient conditions. As it forms a protective layer on the wine, flor continues to metabolize ethanol and other compounds, shaping the dry, nutty profile typical of biologically aged sherries like Fino and Manzanilla *Alexandra and Mardano*.  
 The _Saccharomyces cerevisiae_ data set (Accession: PRJNA592304 ID: 592304) used in this bulk RNAseq analysis was adapted from a 2020 study titled "Transcriptome Profile of Yeast Strain Used for Biological Wine Aging Revealed Dynamic Changes of Gene Expression in Course of Flor Development" by Mardanov et al.
 
 The study was applied to an RNAseq analysis for transcriptome analysis of the structural and functional changes industrial Flor yeast strain exhibited at different stages of velum formation during Sherry wine production. The study's experimental design involved monitoring gene expression levels and changes in gene expression at three stages: Early Biofilm formation, Thin Biofilm Formation and Mature Biofilm Formation. Samples were taken in biological replicates or three and analysed. 
@@ -30,6 +30,75 @@ It is expected that the GO  enrichment will highlight oxidative phosphorylation,
 ----
 
 ## Methods
+### 1. Data Acquistion 
+Raw sequence reads _Saccharomyces cerevisiae_ related to the Flor yeast study(3 biofilm stages; Early, Thin, Mature biofilm, and 3 biological replicates of each stage) were downloaded from the NCBI Sequence Read Archive (Accession: PRJNA592304 ID: 592304) using SRA Toolkit (v3.3.0). Samples and their corresponding accension numbers:
+
+
+| Sample |	Sample ID |	Stage |
+| -------|-----------|-------|
+| SRR10551665	| IL20 | Early biofilm |
+| SRR10551664 |	IL21	| Early biofilm |
+| SRR10551663	| IL22	| Early biofilm |
+| SRR10551662	| IL23	| Thin biofilm |
+| SRR10551661	| IL24	| Thin biofilm |
+| SRR10551660 |	IL25 |	Thin biofilm |
+| SRR10551659	| IL29	| Mature biofilm |
+| SRR10551658	| IL30	| Mature biofilm |
+| SRR10551657	| IL31	| Mature biofilm |
+
+Based on recommendations by Lioa and Shi  (2020), adapter trimming was not performed prior to pseudo alignment quantification. Trimming is necessary when carrying out transcriptome assembly but not recommended to be done before gene expression quantification. Salmon, that will be used for gene expression quantification can automatically soft-clip or ignore bad ends. So trimming is not necessary for this workflow.
+
+### 2. Transcript Quantification
+Transcript Quantification was performed using Salmon (v1.10.3) in . A decoy aware transcriptome index was built from the _Saccharomyces cerevisiae_ S288C, NCBI RefSeq assembly GCF_000146045.2 using a k-mer length of  31. The index was built with the code below and each sample was quantified with the parameters below.
+
+```
+salmon index \
+-t gentrome.fa \
+-d decoys.txt \
+-i salmon_index \
+-k 31
+
+```
+```
+INDEX=salmon_index
+THREADS=8
+
+for fq in *_1.fastq
+do
+ base=$(basename ${fq} _1.fastq)
+ salmon quant \
+ -i salmon_index \
+ -l A \
+ -r ${fq} \
+ -p ${THREADS} \
+ -o ${base}_salmon \
+ --seqBias \
+ --useVBOpt \
+ --validateMappings
+done
+```
+Flag justification: 
+Accuracy flags:  
+-r flag is used  on single end reads.  
+—seqBias corrects sequence specific bias in RNA-seq and improve abundance estimates.  
+—useVBOpt uses variational Bayesian optimization to make abundance estimates more stable.  
+— ValidateMappings enables selective alignment to reduce false mappings and improves mapping accuracy.
+Transcript counts for each sample was imported into R using the tximport package (v1.36.1).
+
+### 3. Differential Expression Analysis
+Differential Expression Analysis was be performed using DESeq2 (v1.48.2) in R (v4.5.1). Raw count matrices were constructed from Salmon output using tximport.
+```
+txi <- tximport(joined.quants, type="salmon", tx2gene=tx2gene)
+dds <- DESeqDataSetFromTximport(txi,
+                                colData = sampleTable,
+                                design = ~ Stage)
+```
+
+
+### 4. Visualization of Data Structure
+
+### 5. Functional Annotation - Over Representation Analysis (ORA)
+
 
 ---
 
@@ -114,3 +183,4 @@ Patro, R., Duggal, G., Love, M. et al. (2017). Salmon provides fast and bias-awa
 
 Taj, Z., Rani, S.S., Gundamaraju, R., Chattopadhyay, I. (2025). Genomic Insights into the Field of Biofilm Research. In: Busi, S., Pattnaik, S., Prasad, R. (eds) Omics Approaches in Biofilm Research. Springer, Cham. https://doi.org/10.1007/978-3-031-91863-6_5
 
+Yang Liao, Wei Shi, Read trimming is not required for mapping and quantification of RNA-seq reads at the gene level, NAR Genomics and Bioinformatics, Volume 2, Issue 3, September 2020, lqaa068, https://doi.org/10.1093/nargab/lqaa068
