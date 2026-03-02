@@ -1,7 +1,7 @@
 GO enrichment ORA for Downrgulated genes
 #################################################
 GO Mature vs Early downregulated genes
-form a coherent picture of what the cell is turning off as it transitions from an early, growth‑oriented state to the fully developed mature velum. The enriched categories cluster around lipid metabolism, phosphorus and organophosphate metabolism, nucleotide turnover, transmembrane transport, and carbon‑processing pathways such as monocarboxylic acid and alcohol metabolism. 
+This plot forms a coherent picture of what the cell is turning off as it transitions from an early, growth‑oriented state to the fully developed mature velum. The enriched categories cluster around lipid metabolism, phosphorus and organophosphate metabolism, nucleotide turnover, transmembrane transport, and carbon‑processing pathways such as monocarboxylic acid and alcohol metabolism. 
 Together, these results indicate a broad suppression of biosynthetic activity, nutrient uptake, and energy‑intensive metabolic processes.
 Early biofilm cells rely heavily on these pathways to support growth, membrane remodeling, and active resource acquisition, but mature biofilm cells downregulate them as they shift toward a slower‑growing, stress‑adapted, respiratory lifestyle. This coordinated decline in metabolic and transport functions aligns with the global transcriptomic reprogramming.
 
