@@ -14,7 +14,14 @@ The _Saccharomyces cerevisiae_ data set (Accession: PRJNA592304 ID: 592304) used
 
 The study was applied to an RNAseq analysis for transcriptome analysis of the structural and functional changes industrial Flor yeast strain exhibited at different stages of velum formation during Sherry wine production. The study's experimental design involved monitoring gene expression levels and changes in gene expression at three stages: Early Biofilm formation, Thin Biofilm Formation and Mature Biofilm Formation. Samples were taken in biological replicates or three and analysed. 
 
-This bulk RNAseq analysis will involve the transcript quantification, Differential Expression analysis, Functional Annotation and ORA/GSEA to determine the changes in gene expression from Early to Mature stages of flor formation.
+This bulk RNAseq analysis will involve the transcript quantification, Differential Expression analysis, Functional Annotation and ORA/GSEA to determine the changes in gene expression from Early to Mature stages of flor formation.  
+
+Salmon was chosen over full‑alignment tools like STAR or HISAT2 because its quasi‑mapping approach provides highly accurate transcript quantification with dramatically lower computational cost, making it ideal for bulk RNA‑seq workflows where alignment files are not required (Salmon documentation).  
+
+DESeq2 was selected instead of edgeR or limma because it models count data using shrinkage‑based dispersion and fold‑change estimation, producing more stable and interpretable effect sizes for datasets with small numbers of replicates such as the three‑per‑stage design in this study (Liu et al 2021).  
+
+ORA was used rather than GSEA because the goal of this analysis was to interpret clear sets of significantly up‑ and down‑regulated genes, and ORA is optimized for categorical DEG lists, whereas GSEA is better suited for subtle, rank‑based changes across the entire transcriptome (Plutobio 2025).
+
 
 ----
 ## Expected Results
@@ -345,4 +352,8 @@ Together, these results depict biofilm development as a coordinated metabolic an
 
 - Taj, Z., Rani, S.S., Gundamaraju, R., Chattopadhyay, I. (2025). Genomic Insights into the Field of Biofilm Research. In: Busi, S., Pattnaik, S., Prasad, R. (eds) Omics Approaches in Biofilm Research. Springer, Cham. https://doi.org/10.1007/978-3-031-91863-6_5.
 
-- Yang Liao, Wei Shi, Read trimming is not required for mapping and quantification of RNA-seq reads at the gene level, NAR Genomics and Bioinformatics, Volume 2, Issue 3, September 2020, lqaa068, https://doi.org/10.1093/nargab/lqaa068
+- Yang Liao, Wei Shi, Read trimming is not required for mapping and quantification of RNA-seq reads at the gene level, NAR Genomics and Bioinformatics, Volume 2, Issue 3, September 2020, lqaa068, https://doi.org/10.1093/nargab/lqaa068.
+  
+- Liu, S., Wang, Z., Zhu, R., Wang, F., Cheng, Y., Liu, Y. Three Differential Expression Analysis Methods for RNA Sequencing: limma, EdgeR, DESeq2. J. Vis. Exp. (175), e62528, doi:10.3791/62528 (2021).
+  
+- Pluto Bio • GSEA vs ORA: Two key pathway analysis approach. . . | Pluto Bio. (2025). https://pluto.bio/resources/Learning%20Series/gsea-vs-ora-two-key-pathway-analysis-approaches-for-next-gen-sequencing-data
