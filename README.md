@@ -122,9 +122,10 @@ The sample data had the following groups:
 ### 4. Visualization of Data Structure
 Overall data structure was assessed using models constructed with the apeglm package (v1.30.0) to determine gene expression changes across each stage using Heatmaps and PCA. Data was computed from variance-stabilizing transformed (VST) counts using the DESeq2 vst() function. 
 
+A heatmap was constructed from normalized count data, scaled by row to emphasize relative expression differences, with hierarchical clustering of both rows (genes) and columns (samples), and stage annotation included to visualize transcriptional patterns across biofilm development.
 
 ### 5. Functional Annotation - Over Representation Analysis (ORA)
-
+Functional annotation was performed using GO over-representation analysis (ORA) implemented in clusterProfile (v4.16.0)
 
 ---
 
