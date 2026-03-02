@@ -109,7 +109,7 @@ Overall data structure was assessed using models constructed with the apeglm pac
 ---
 
 ## Results
-### PCA for observing general data structure
+#### PCA for observing general data structure
 <img width="1000" height="500" alt="PCA" src="https://github.com/user-attachments/assets/0f375481-7552-413c-bad9-e98c8b6b522a" />  
 
 **Figure 1.** The plot shows a clear meaningful separation between the three biofilm stages.
@@ -119,14 +119,14 @@ PC2 separates Thin from Mature biofilm samples. This likely corresponds to the i
 The clear clustering reflects the major metabolic and stress‑response reprogramming described in the paper, supporting the expectation that differential expression analysis will reveal stage‑specific gene expression patterns.
 
 
-### Global Heatmap of changes in gene expression across all stages
+#### Global Heatmap of changes in gene expression across all stages
 <img width="1000" height="700" alt="Global heatmap across all stages" src="https://github.com/user-attachments/assets/e665fd3c-97ce-46b0-95d1-8e93418a9acc" />
 
 **Figure 2.** The heatmap shows a clear stage‑dependent structure in gene expression that mirrors the PCA patterns. Early biofilm samples cluster together with high expression of glycolytic and growth‑related genes and low expression of mitochondrial and stress‑response genes. Thin biofilm samples form an intermediate group, showing partial activation of oxidative‑stress pathways and early reductions in nutrient‑transporter activity. Mature biofilm samples form a distinct cluster characterized by strong induction of FLO11‑linked adhesion genes, sulfur and mitochondrial pathways, and protein‑quality‑control systems, along with broad repression of glycolysis and transporter genes.
 
 Hierarchical clustering reinforces these transitions, with large coordinated blocks of genes shifting from glycolytic and growth‑associated expression in early biofilm to oxidative, stress‑adapted, and adhesion‑related programs in the mature stage. This structured pattern highlights broad, systematic transcriptional reprogramming across stages and provides a strong foundation for the differential‑expression and functional‑enrichment analyses that follow.
 
-### MA Plot - Mature vs Early biofilm stages
+#### MA Plot - Mature vs Early biofilm stages
 <img width="1000" height="500" alt="MA Plot Mature vs Early Biofilm" src="https://github.com/user-attachments/assets/4ba3ac7b-3178-4077-8f9c-3628a9712fc8" />
 
 **Figure 3.** The MA plots show a strong and widespread transcriptional shift between the two stages. In both the unshrunk and shrunk versions, a large number of genes deviate substantially from the horizontal baseline, indicating extensive differential expression. 
@@ -134,7 +134,7 @@ Genes with higher mean normalized counts show more stable fold‑change estimate
 Applying shrinkage reduces the extreme log fold‑change values for low‑abundance genes, pulling them toward zero and producing a more conservative and biologically interpretable distribution.
 The clear vertical spread of points in both plots reflects the extensive transcriptional reprogramming that occurs as the biofilm transitions from early to mature stages, consistent with the PCA and heatmap results.
 
-### Volcano Plot - Mature vs Early Biofilm 
+#### Volcano Plot - Mature vs Early Biofilm 
 
 <img width="1000" height="600" alt="Volcano Plot Mature vs Early Biofilm" src="https://github.com/user-attachments/assets/94c38172-a1c5-47a7-8839-d1500282b510" />
 
@@ -142,6 +142,20 @@ The clear vertical spread of points in both plots reflects the extensive transcr
 The wide horizontal spread indicates large magnitude changes in expression, while the tall vertical distribution demonstrates strong statistical support for these differences. This pattern highlights the transcriptional changes distinguishing mature from early biofilm samples.
 These results help support findings in the paper.
 Early biofilm cells rely on glycolysis and growth‑associated pathways, while mature biofilm cells adopt a respiratory, stress‑adapted, adhesion‑focused phenotype optimized for survival at the wine surface. The strong enrichment of upregulated stress‑response, mitochondrial, and sulfur‑metabolism genes in mature biofilm, paired with the repression of fermentative and nutrient‑responsive genes, visually confirms this metabolic and physiological transition.
+
+### Over Representation Analysis
+
+#### GO Erichment of Upregulated genes - Mature vs Early biofilm
+<img width="1200" height="800" alt="GO Mature vs Early upregulated genes" src="https://github.com/user-attachments/assets/bd073f63-d7d8-43d8-8852-b86c11d99fd5" />  
+
+**Figure 5.** These results show  a tightly connected set of processes centered on mitochondrial function, respiration, and protein quality control, capturing the core shift that defines mature biofilm physiology. Many of the most enriched categories involve mitochondrion organization, mitochondrial translation, respiratory chain complex assembly, and aerobic respiration, reflecting a strong activation of oxidative metabolism as cells transition away from the fermentative, growth‑oriented early stage. Additional terms related to protein folding, proteasomal protein catabolism, and modification‑dependent degradation highlight increased investment in maintaining proteome integrity under the stressful conditions. The repeated appearance of mitochondrial membrane and inner‑membrane organization terms reinforces the idea that mature biofilm cells undergo substantial remodeling of their respiratory machinery. 
+Together, these results show that mature biofilm formation is driven by a coordinated upregulation of energy production, mitochondrial biogenesis, and protein‑quality‑control pathways that support long‑term survival and adhesion at the air–liquid interface.
+
+#### GO Enrichment of Downregulated genes - Mature vs Early biofilm
+<img width="1000" height="600" alt="GO Mature vs Early downregulated genes" src="https://github.com/user-attachments/assets/d411f477-2ac9-4b0a-87b9-badb9766284a" />
+
+**Figure 6.** This plot forms a coherent picture of what the cell is turning off as it transitions from an early, growth‑oriented state to the fully developed mature velum. The enriched categories cluster around lipid metabolism, phosphorus and organophosphate metabolism, nucleotide turnover, transmembrane transport, and carbon‑processing pathways such as monocarboxylic acid and alcohol metabolism. These results indicate a broad suppression of biosynthetic activity, nutrient uptake, and energy intensive metabolic processes.
+Early biofilm cells rely heavily on these pathways to support growth, membrane remodeling, and active resource acquisition, but mature biofilm cells downregulate them as they shift toward a slower‑growing, stress‑adapted, respiratory lifestyle. This coordinated decline in metabolic and transport functions aligns with the global transcriptomic reprogramming.
 
 
 
