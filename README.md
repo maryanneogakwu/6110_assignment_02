@@ -1,7 +1,9 @@
 # 6110_assignment_02
 
-**RNASeq Differential Expression Analysis of Flor Yeast**
-Maryanne Ogakwu
+**RNASeq Differential Expression Analysis of Flor Yeast**  
+
+Author: Maryanne Ogakwu  
+
 Dataset: Flor Yeast - Madanov et al. 2020, Sec. Evolutionary and Genomic Microbiology
 
 ---
