@@ -109,6 +109,9 @@ Overall data structure was assessed using models constructed with the apeglm pac
 ---
 
 ## Results
+**Statistical Tests and visualizations were carried out for each stage of the big film formation, namely: Mature vs Early, Mature vs Thin and Thin vs Early. The models discussed here (Mature vs Early) best reflect the gene expression changes from begging to end of the biofilm formation, with exception of the PCA and Global Heatmap plots that are used to represent overall dataset structure and architechture. The extra plots and discussions of the plots can be found in the Figures directory and in the corresponding plot folders. These were not included in the README.md file for the sake of brevity.**
+
+
 #### PCA for observing general data structure
 <img width="1000" height="500" alt="PCA" src="https://github.com/user-attachments/assets/0f375481-7552-413c-bad9-e98c8b6b522a" />  
 
