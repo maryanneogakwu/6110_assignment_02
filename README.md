@@ -6,6 +6,8 @@ Dataset: Flor Yeast - Madanov et al. 2020, Sec. Evolutionary and Genomic Microbi
 
 ---
 ## Introduction
+Sherry wine is a fortified wine from southern Spain that develops its distinctive character through biological aging, where a surface film of flor yeast grows on the wine in partially filled barrels *Niels*.   
+Flor is a specialized form of Saccharomyces cerevisiae that thrives after primary fermentation is complete, surviving in high alcohol and low nutrient conditions. As it forms a protective layer on the wine, flor continues to metabolize ethanol and other compounds, shaping the dry, nutty profile typical of biologically aged sherries like Fino and Manzanilla *Alexandra and Mardano* .
 The _Saccharomyces cerevisiae_ data set (Accession: PRJNA592304 ID: 592304) used in this bulk RNAseq analysis was adapted from a 2020 study titled "Transcriptome Profile of Yeast Strain Used for Biological Wine Aging Revealed Dynamic Changes of Gene Expression in Course of Flor Development" by Mardanov et al.
 
 The study was applied to an RNAseq analysis for transcriptome analysis of the structural and functional changes industrial Flor yeast strain exhibited at different stages of velum formation during Sherry wine production. The study's experimental design involved monitoring gene expression levels and changes in gene expression at three stages: Early Biofilm formation, Thin Biofilm Formation and Mature Biofilm Formation. Samples were taken in biological replicates or three and analysed. 
@@ -84,6 +86,8 @@ Together, these results depict biofilm development as a coordinated metabolic an
 
 
 ## References
+Alexandre H. (2013). Flor yeasts of Saccharomyces cerevisiae--their ecology, genetics and metabolism. International journal of food microbiology, 167(2), 269–275. https://doi.org/10.1016/j.ijfoodmicro.2013.08.021
+
 Barny, L. A., & Plate, L. (2025). From stress to homeostasis: Mass spectrometry–based insights into the unfolded protein response (UPR) and proteostasis. Advances in Biological Regulation, 99, 101127. https://doi.org/10.1016/j.jbior.2025.101127
 
 Bars, R. L., Marion, J., Borgne, R. L., Satiat-Jeunemaitre, B., & Bianchi, M. W. (2014). ATG5 defines a phagophore domain connected to the endoplasmic reticulum during autophagosome formation in plants. Nature Communications, 5(1), 4121. https://doi.org/10.1038/ncomms5121
@@ -100,7 +104,11 @@ Salmon - Salmon 1.10.2 documentation. (n.d.). https://salmon.readthedocs.io/en/
 
 Malviya, J., Alameri, A.A., Al-Janabi, S.S. et al. Metabolomic profiling of bacterial biofilm: trends, challenges, and an emerging antibiofilm target. World J Microbiol Biotechnol 39, 212 (2023). https://doi.org/10.1007/s11274-023-03651-y
 
+Mardanov, A. V., Gruzdev, E. V., Beletsky, A. V., Ivanova, E. V., Shalamitskiy, M. Y., Tanashchuk, T. N., & Ravin, N. V. (2023). Microbial Communities of Flor Velums and the Genetic Stability of Flor Yeasts Used for a Long Time for the Industrial Production of Sherry-like Wines. Fermentation, 9(4), 367. https://doi.org/10.3390/fermentation9040367
+
 Mori K. (2024). Elucidation of molecular mechanism of the unfolded protein response. The Keio journal of medicine, 73(1), 13. https://doi.org/10.2302/kjm.ABSTRACT_73_1-2
+
+Niels. (2023, August 31). Sherry flor. Bodegas Lustau. https://lustau.es/en/blog/sherry-flor-the-veil-of-flor-and-what-is-flor-used-for-in-sherry/?utm_source=copilot.com
 
 Patro, R., Duggal, G., Love, M. et al. (2017). Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419. https://doi.org/10.1038/nmeth.4197
 
